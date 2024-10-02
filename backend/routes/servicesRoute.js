@@ -1,5 +1,7 @@
 const express = require('express')
 const router = express.Router()
+//for importing controllers
+const servicesController =require('./controllers/servicesController')
 
 //middleware for accessing home route
 router.use((req, res, next) => {
@@ -7,15 +9,18 @@ router.use((req, res, next) => {
     next()
 })
 
-router.get('/', async (req , res) => {
-    try{
-        res.send('This is the ServicesPage to display')
-    } catch (error){
-        console.error('Error rendering ServicesPage' , error);
-        // Send a 500 status and error message
-        res.status(500).send('Error displaying the ServicesPage');
-    }
-})
+//for importing data from models
+const Services = require('../models/services')
+
+
+//[CREATE] route
+router.post('/add', servicesController.createService)
+
+//[UPDATE] route 
+router.put("/:id", servicesController.editService);
+
+//[DELETE] route
+router.delete('/:id', servicesController.deleteService )
 
 
 module.exports = router

@@ -7,6 +7,8 @@ router.use((req, res, next) => {
     next()
 })
 
+
+//[READ] route
 router.get('/', async (req , res) => {
     try{
         res.send('This is BookingsPage to display')
@@ -16,6 +18,5 @@ router.get('/', async (req , res) => {
         res.status(500).send('Error displaying the BookingsPage');
     }
 })
-
 
 module.exports = router
