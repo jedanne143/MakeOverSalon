@@ -18,7 +18,23 @@ const logMiddleware = (req, res, next) => {
 app.use(logMiddleware)
 
 //=========ROUTES=============
+//for redirecting root path to /home
+app.get('/' , (req, res) => {
+    res.redirect('/home')
+})
+//for route imports
+const homeRouter = require('./routes/homeRoute')
+const servicesRouter = require('./routes/servicesRoute')
+const bookingsRouter = require('./routes/bookingsRoute')
+const socialsRouter = require('./routes/socialsRoute')
+const adminRoute =require('./routes/adminRoute')
 
+//for allocating each router to a specific url path
+app.use('/home' , homeRouter)
+app.use('/services' , servicesRouter)
+app.use('/bookings' , bookingsRouter)
+app.use('/socials' , socialsRouter)
+app.use('/admin' , adminRoute)
 
 
 //for starting the server
