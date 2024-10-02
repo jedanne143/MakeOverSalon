@@ -11,7 +11,6 @@ connectToDb();
 
 //=========MIDDLEWARES==========
 app.use(express.json());
-app.use(express.static("public"));
 const logMiddleware = (req, res, next) => {
     console.log(`Request [method: ${req.method}] [URL: ${req.url}]`)
     next()

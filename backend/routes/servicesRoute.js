@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 //for importing controllers
-const servicesController =require('./controllers/servicesController')
+const servicesController =require('../controllers/servicesController')
 
 //middleware for accessing home route
 router.use((req, res, next) => {
