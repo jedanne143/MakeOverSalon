@@ -8,6 +8,10 @@ const PORT = process.env.PORT || 3000
 const connectToDb = require('./config/connectToDb')
 connectToDb();
 
+//for cross-origin access
+const cors = require('cors');
+//allow requests from frontend
+app.use(cors()); 
 
 //=========MIDDLEWARES==========
 app.use(express.json());

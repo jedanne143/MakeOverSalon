@@ -11,10 +11,9 @@ function Navbar() {
       }
     }
   return (
-    <nav>
+    <nav className="navbar">
         <div className='brandContainer'>
-            <img className='logo' src='' />
-            <div>Makeover Beauty Lounge</div>
+            <img className='logo' src='../logo.png' />
         </div>
         {/* Conditional rendering for hamburger icon */}
         <div className="hamburgerIcon" onClick={() => setMenuOpen(!menuOpen)}>
@@ -33,5 +32,4 @@ function Navbar() {
     </nav>
   )
 }
-
 export default Navbar
