@@ -17,6 +17,17 @@ const createService = async (req,res) => {
             res.status(400).json({ error: err.message });
     }
 }
+
+//[READ] to read all services available
+const readService = async (req, res) => {
+    try {
+        const services = await Services.find(); 
+        res.json(services);    
+    } catch (error) {
+        res.status(500).send('Error fetching services data from the database');
+    }
+}
+
 //[UPDATE] to edit an existing service from the database by id
 const editService = async (req, res) => {
     try{
@@ -48,6 +59,7 @@ const deleteService = async (req, res) => {
 
 module.exports = {
     createService,
+    readService,
     editService,
     deleteService
 }

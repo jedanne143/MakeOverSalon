@@ -11,13 +11,13 @@ router.use((req, res, next) => {
 
 //for importing data from models
 const Services = require('../models/services')
-
-
+//=====ROUTES======
 //[CREATE] route
 router.post('/add', servicesController.createService)
-
+//[READ] route
+router.post('/view' , servicesController.readService)
 //[UPDATE] route 
-router.put("/:id", servicesController.editService);
+router.put('/:id', servicesController.editService);
 
 //[DELETE] route
 router.delete('/:id', servicesController.deleteService )
