@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@400;700&display=swap');
 /* styling for active link */
 .active{
     color:maroon!important;
@@ -23,7 +24,10 @@ body {
     background-color: white;
     border-bottom: 1px solid maroon;
     position:sticky;
-    top:0
+    top:0;
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    
 }
 .navItem{
     text-decoration: none;

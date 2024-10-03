@@ -1,8 +1,14 @@
 import React from 'react'
+import { Container, Typography } from '@mui/material';
+import './Home.css'
 
 function Home() {
   return (
-    <div>Home</div>
+    <div className="homeContainer">
+      
+
+    </div>
+
   )
 }
 
