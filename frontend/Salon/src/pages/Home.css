@@ -1,6 +1,17 @@
 .homeContainer{
     display: flex;
+    align-items:center;
+    justify-content: center;
     flex:1;
     flex-direction: column;
     box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+.homeContainer img{
+    display:flex;
+    margin:0;
+    padding:0;
+    object-fit: cover;
+    width:100%
 }

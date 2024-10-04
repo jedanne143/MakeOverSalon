@@ -1,6 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@400;700&display=swap');
 .adminContainer{
     display: flex;
+    align-items:center;
+    justify-content: center;
     flex:1;
     flex-direction: column;
     box-sizing: border-box;
+    margin:0;
+    padding:0;
+    width:100%
+
+}
+.loginContainer{
+    flex-direction:column;
+    align-items:center;
+    border:2px solid red;
+    padding: 20px;
+    width:100%
+}
+/* With conditional rendering */
+.displayContainer{
+    flex-direction:column;
+    align-items:center;
+    border:2px solid red;
+    padding: 20px;
+    width:100%
+}
+.inputContainer{
+    display:flex;
+    flex-direction:column;
+    width:auto;
+    align-items: flex-end;
+}
+.addContainer, .changeContainer{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    border:2px solid red;
+    padding: 20px;
+    width:100%
+}
+.iconLady{
+    width:100px;
+    height:auto;
+    margin:20px 0 10px 0;
+}
+.adminHeading{
+    font-family: 'Qwitcher Grypen', cursive
+}
+.labelCol{
+    text-align: center;
+    display:flex;
+    flex-direction:column;
+    width:100%;
+}
+.labelRow{
+    text-align: left;
+    display:flex;
+    flex-direction:row;
+    width:100%;
+    align-items:center
+}
+.labelLeft{
+    text-align:left;
+    width:100%;
+}
+.serviceDescription{
+    width: 350px
+}
+.password{
+    height:30px;
+    width:200px;
+    padding:2px;
+    margin:5px;
+    border-radius: 10px;
+    border: 1px solid maroon;
+    text-align : center
+}
+.submitBtn , .addBtn{
+    padding:5px 10px;
+    border-radius: 10px;
+    margin:5px;
+    background-color: rgb(236, 224, 224);
+}
+.submitBtn:hover, .addBtn:hover{
+    background-color: #DBBFAF
+}
+.inputDetail{
+    height:30px;
+    width:350px;
+    padding:2px;
+    margin:5px;
+    border-radius: 10px;
+    border: 1px solid maroon;
+}
+.serviceDescription{
+    width:350px;
+    padding:10px;
+    border-radius: 10px;
+    border: 1px solid maroon;
+    margin:10px;
+
+}
+.eachService{
+    display:flex;
+    flex-direction: row
 }
