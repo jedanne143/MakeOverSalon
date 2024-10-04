@@ -1,6 +1,7 @@
   import React, {useState} from 'react'
   import { useNavigate } from 'react-router-dom'
   import './Admin.css'
+  
   //password from .env file
   const adminPassword = import.meta.env.VITE_PASSWORD
   function Admin() {
@@ -50,11 +51,19 @@
           <div className="addContainer">
             <h1 className="adminHeading">Add Services</h1>
             <div className="inputContainer">
+              <label className='labelRow'>Service Type:
+              <select name='serviceType' className="inputDetail" required>
+                <option value='body'>Body</option>
+                <option value='facial'>Facial</option>
+                <option value='hair'>Hair</option>
+                <option value='nail'>Nail</option>
+              </select>
+              </label>
               <label className='labelRow'>Service Name:
-              <input type="text" className="inputDetail" placeholder="*required" />
+              <input type="text" className="inputDetail" placeholder="*required" required/>
               </label>
               <label className='labelRow'>Service Price :
-              <input type="text" className="inputDetail" placeholder="*required" />
+              <input type="number" className="inputDetail" placeholder="*required" required/>
               </label>
               <label className='labelLeft'>Service Description:</label>
               <textarea className="serviceDescription" rows='4' > </textarea>

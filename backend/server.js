@@ -11,6 +11,7 @@ connectToDb();
 //for cross-origin access
 const cors = require('cors');
 //allow requests from frontend
+app.use(express.json())
 app.use(cors()); 
 
 //=========MIDDLEWARES==========

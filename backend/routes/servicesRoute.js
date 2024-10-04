@@ -14,8 +14,10 @@ const Services = require('../models/services')
 //=====ROUTES======
 //[CREATE] route
 router.post('/add', servicesController.createService)
-//[READ] route
-router.post('/view' , servicesController.readService)
+//[READ] route for all services
+router.get('/view' , servicesController.readServices)
+//[READ] route for a particular service
+router.get('/:id' , servicesController.readService)
 //[UPDATE] route 
 router.put('/:id', servicesController.editService);
 

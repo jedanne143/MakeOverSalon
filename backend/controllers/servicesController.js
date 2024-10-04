@@ -3,12 +3,13 @@ const Services = require ('../models/services.js')
 //[CREATE] to add a service to the database
 const createService = async (req,res) => {
     try{
-        const {type, name, price, note } = req.body
+        const {type, name, price, duration, description } = req.body
         const service = await Services.create({
             type: type,
             name: name,
             price: price,
-            note: note
+            duration: duration,
+            description: description
         })
         console.log("Successfully added a service")
         res.json({ service: service})
@@ -19,7 +20,7 @@ const createService = async (req,res) => {
 }
 
 //[READ] to read all services available
-const readService = async (req, res) => {
+const readServices = async (req, res) => {
     try {
         const services = await Services.find(); 
         res.json(services);    
@@ -28,16 +29,30 @@ const readService = async (req, res) => {
     }
 }
 
+//[READ] to read a service from the database by id
+const readService = async (req, res) => {
+    try {
+        const id = req.params.id
+        const service = await Services.findById(id)
+        // Send the data as JSON in the response 
+        res.json({service:service});    
+    } catch (error) {
+        res.status(500).send('Error fetching services data from the database');
+    }
+}
+
+
 //[UPDATE] to edit an existing service from the database by id
 const editService = async (req, res) => {
     try{
         const id = req.params.id
-        const {type, name, price, note } = req.body
+        const {type, name, price, duration, description } = req.body
         const service =await Services.findByIdAndUpdate(id,{
             type: type,
             name: name,
             price: price,
-            note: note
+            duration:duration,
+            description: description
         })
         console.log("Successfully edited a service")
         const updatedService = await Services.findById(id)
@@ -59,6 +74,7 @@ const deleteService = async (req, res) => {
 
 module.exports = {
     createService,
+    readServices,
     readService,
     editService,
     deleteService

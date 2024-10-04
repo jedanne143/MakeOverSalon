@@ -15,8 +15,10 @@ const serviceSchema = new mongoose.Schema({
         type: Number,
         min: [0, 'Price must be a positive number']
     },
+    //optional duration field
+    duration :String,
     //optional notes field
-    note: String
+    description: String
 })
 
 //for creating the model
