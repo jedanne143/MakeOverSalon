@@ -27,6 +27,7 @@ body {
     top:0;
     flex: 0 0 auto;
     box-sizing: border-box;
+    margin-bottom: 5px;
     
 }
 .navItem{

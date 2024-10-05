@@ -1,0 +1,9 @@
+.mainContainer{
+    display:flex;
+    margin:0;
+    width: '100%';
+    height:'auto';
+    flex-direction: 'column';
+    box-sizing:'border-box'
+
+}

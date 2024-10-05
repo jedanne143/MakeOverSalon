@@ -3,28 +3,41 @@
     display: flex;
     align-items:center;
     justify-content: center;
-    flex:1;
     flex-direction: column;
     box-sizing: border-box;
     margin:0;
     padding:0;
-    width:100%
-
+    width:100%;
+    height:auto;
 }
-.loginContainer{
+.login{
+    display:flex;
     flex-direction:column;
     align-items:center;
-    border:2px solid red;
     padding: 20px;
-    width:100%
+    width:auto;
+    height:auto;
 }
-/* With conditional rendering */
+.addForm{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:auto;
+    height:auto;
+}
+.typeHeading{
+    font-family: 'Qwitcher Grypen', cursive;
+    font-size: 35px;
+    color:maroon
+}
+/* Has conditional rendering */
 .displayContainer{
+    display:flex;
     flex-direction:column;
     align-items:center;
-    border:2px solid red;
     padding: 20px;
-    width:100%
+    width:100%;
+    height:auto
 }
 .inputContainer{
     display:flex;
@@ -36,9 +49,9 @@
     display:flex;
     flex-direction:column;
     align-items:center;
-    border:2px solid red;
     padding: 20px;
-    width:100%
+    width:100%;
+    height:auto
 }
 .iconLady{
     width:100px;
@@ -66,7 +79,8 @@
     width:100%;
 }
 .serviceDescription{
-    width: 350px
+    width: 350px;
+    align-self: flex-end;
 }
 .password{
     height:30px;
@@ -100,9 +114,28 @@
     border-radius: 10px;
     border: 1px solid maroon;
     margin:10px;
-
+    height:auto
 }
-.eachService{
+
+.facialContainer{
     display:flex;
-    flex-direction: row
+    flex-direction:column;
+    width:100%;
+    height:auto;
+    flex-wrap:wrap;
+}
+.facialCard{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    height:auto;
+    padding: 10px 30px;
+    border:1px solid maroon;
+    border-radius:10px;
+    margin:10px 0px;
+    flex-wrap:wrap;
+}
+.bold{
+    font-weight: bold;
+    font-family:Arial, Helvetica, sans-serif
 }

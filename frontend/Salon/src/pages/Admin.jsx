@@ -1,9 +1,22 @@
-  import React, {useState} from 'react'
+  import React, {useState, useEffect} from 'react'
   import { useNavigate } from 'react-router-dom'
   import './Admin.css'
-  
+  import axios from 'axios'
+  import EditBtn from '../components/EditBtn';
+import CloseBtn from '../components/DeleteBtn';
+
+  //styling for material UI component
+  const buttonStyle = {
+    color: 'maroon',
+    width: '15px',
+    margin: '5px',
+    backgroundColor: '#DBBFAF',
+    height:'18px'
+  };
+
   //password from .env file
   const adminPassword = import.meta.env.VITE_PASSWORD
+
   function Admin() {
     // state to track user input password
     const [password, setPassword] = useState('');
@@ -11,6 +24,40 @@
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     //useNavigate hook for redirection
     const navigate = useNavigate();
+    //state to save services
+    const [services, setServices] = useState([])
+    
+    //input for services
+    const [createService, setCreateServices] = useState({
+      type: "",
+      name: "",
+      price:"",
+      duration:"",
+      description: ""
+    });
+
+    //update a service
+    const [updateService, setUpdateService] = useState({
+      _id: null,
+      type: "",
+      name: "",
+      price:"",
+      duration:"",
+      description: ""
+    });
+
+    // Make a request to DB
+    const fetchServices = async () => {
+      const res = await axios.get("http://localhost:3000/services/view");
+      const salon = await res.data;
+      setServices(salon);
+      console.log(salon);
+
+    };
+
+    useEffect(() => {
+      fetchServices();
+    }, []);
 
     const handleLogin = (e) => {
       // Prevent page refresh
@@ -25,12 +72,18 @@
         navigate('/home'); 
       }
     };
+    const handleClose=() => {
+
+    }
+    const handleEdit=() => {
+
+    }
     return (
       <div className='adminContainer'>
-        <div className="loginContainer" style={{ display: isAuthenticated ? 'none' : 'flex' }}>
+        <div className="login" style={{ display: isAuthenticated ? 'none' : 'flex' }}>
           <h1 className="adminHeading">Hello Admin!</h1>
           <img className="iconLady" src='/iconLady.png' />
-          <form onSubmit={handleLogin}> 
+          <form className="login" onSubmit={handleLogin}> 
             <label className='labelCol'>Enter password
             <br/>
             <input 
@@ -51,7 +104,8 @@
           <div className="addContainer">
             <h1 className="adminHeading">Add Services</h1>
             <div className="inputContainer">
-              <label className='labelRow'>Service Type:
+              <form className="addForm">
+              <label className='labelRow'>Type:
               <select name='serviceType' className="inputDetail" required>
                 <option value='body'>Body</option>
                 <option value='facial'>Facial</option>
@@ -59,25 +113,63 @@
                 <option value='nail'>Nail</option>
               </select>
               </label>
-              <label className='labelRow'>Service Name:
-              <input type="text" className="inputDetail" placeholder="*required" required/>
-              </label>
-              <label className='labelRow'>Service Price :
-              <input type="number" className="inputDetail" placeholder="*required" required/>
-              </label>
-              <label className='labelLeft'>Service Description:</label>
-              <textarea className="serviceDescription" rows='4' > </textarea>
+                <label className='labelRow'>Name:
+                <input type="text" className="inputDetail" placeholder="*required" required/>
+                </label>
+                <label className='labelRow'>Price: 
+                <input type="number" className="inputDetail" placeholder="*required" required/>
+                </label>
+                <label className='labelRow'>Duration: 
+                <input type="number" className="inputDetail"/>
+                </label>
+                <label className='labelLeft'>Description:</label>
+                <textarea className="serviceDescription" rows='4' > </textarea>
+                <button className='addBtn'>Add</button>
+              </form>
             </div>
-            <button className='addBtn'>Add</button>
+
 
           </div>
           <div className="changeContainer">
             <h1 className="adminHeading">Edit Existing Services</h1>
-            <div className='eachService'>
-              <div className='serviceDetail'>Service Name</div>
-              <div className='serviceDetail'>Price</div>
-              <div className='serviceDetail'>Description</div>
+            {/* Body Services */}
+            <div className='bodyContainer'>
+              <p className='typeHeading'>Body</p>
+            {services
+              .filter(service => service.type === 'body')
+              .map(body => (                    
+                <div key={body._id} className="bodyCard">
+                  <div className='bold'>{body.name}</div>
+                  <div>Price: Php {body.price}</div>
+                  <div>Duration: {body.duration}</div>
+                  <div>{body.description}</div>
+                  
+                  
+                </div>
+              ))
+            }
             </div>
+            {/* Facial Services */}
+            <div className='facialContainer'>
+            <p className='typeHeading'>Facial</p>
+            {services
+              .filter(service => service.type === 'facial') //facial services only
+              .map(facial => (                    
+                <div key={facial._id} className="facialCard">
+                  <div className='bold'>{facial.name}</div>
+                  <div>Price: Php {facial.price}</div>
+                  <div>Duration: {facial.duration}</div>
+                  <div>Description: {facial.description}</div>
+                  <div className="btnContainer">
+                    <EditBtn/>
+                    <CloseBtn />
+                  </div>
+
+                </div>
+            ))
+            }
+            </div>
+
           </div>
         </div>
       </div>

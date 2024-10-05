@@ -5,22 +5,14 @@ import Services from './pages/Services'
 import Bookings from './pages/Bookings'
 import Socials from './pages/Socials'
 import Admin from './pages/Admin'
-import { Container } from '@mui/material'
+'./App.css'
 
 
 function App() {
 
   return (
     
-    <Container maxWidth={false}  disableGutters
-    sx={{
-      margin:0,
-      width: '100%',
-      minHeight: '100vh',
-      flexDirection: 'column',
-      boxSizing:'border-box'
-      
-    }}>
+    <main className="mainContainer">
       <Navbar />
       <Routes>
         {/* Redirect from root path '/' to '/home' */}
@@ -31,7 +23,7 @@ function App() {
         <Route path='/socials' element = {<Socials/>} />
         <Route path= '/admin' element = {<Admin/>} />
       </Routes>
-    </Container>
+    </main>
     
   )
 }

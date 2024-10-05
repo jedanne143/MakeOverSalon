@@ -1,0 +1,17 @@
+.deleteBtn{
+    color: 'maroon';
+    text-transform: uppercase;
+    width: 45x;
+    margin: 5px;
+    background-color: #DBBFAF;
+    color:maroon;
+    font-weight:bold;
+    height:auto;
+    border-radius:10px;
+    padding:5px 10px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+.deleteBtn:hover{
+    transform: scale(1.1);
+    background-color: #dbb098;
+}
