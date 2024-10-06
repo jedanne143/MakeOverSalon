@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@400;700&display=swap');
 .adminContainer{
     display: flex;
+    flex-wrap: wrap;
     align-items:center;
     justify-content: center;
     flex-direction: column;
@@ -26,6 +27,9 @@
     height:auto;
 }
 .typeHeading{
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
     font-family: 'Qwitcher Grypen', cursive;
     font-size: 25px;
     color:black;
@@ -33,6 +37,7 @@
     background-color: seashell;
     padding:5px 10px;
     border-radius: 10px;
+    height:auto;
 }
 .activeHeading{
     font-family: 'Qwitcher Grypen', cursive;
@@ -46,8 +51,11 @@
 }
 .headingContainer{
     display: flex;
+    flex-wrap:wrap;
     flex-direction:row;
     justify-content: center;
+    width:100%;
+    height:auto
 
 }
 /* Has conditional rendering */
@@ -71,7 +79,8 @@
     align-items:center;
     padding: 20px;
     width:100%;
-    height:auto
+    height:auto;
+    border: 1px solid green
 }
 .iconLady{
     width:100px;
@@ -92,15 +101,36 @@
     display:flex;
     flex-direction:row;
     width:100%;
-    align-items:center
+    align-items:center;
+    justify-content: space-between;
 }
 .labelLeft{
     text-align:left;
     width:100%;
 }
+.editDescription{
+    border-radius: 10px;
+    padding: 5px;
+    margin:5px
+}
+.editDetail{
+    border-radius:10px;
+    margin:5px;
+    padding:5px;
+
+}
 .serviceDescription{
     width: 350px;
     align-self: flex-end;
+}
+
+.inputDetail{
+    height:30px;
+    width:350px;
+    padding:2px;
+    margin:5px;
+    border-radius: 10px;
+    border: 1px solid maroon;
 }
 .password{
     height:30px;
@@ -111,7 +141,7 @@
     border: 1px solid maroon;
     text-align : center
 }
-.submitBtn , .addBtn{
+.submitBtn , .button{
     padding:5px 10px;
     border-radius: 10px;
     margin:5px;
@@ -120,14 +150,7 @@
 .submitBtn:hover, .addBtn:hover{
     background-color: #DBBFAF
 }
-.inputDetail{
-    height:30px;
-    width:350px;
-    padding:2px;
-    margin:5px;
-    border-radius: 10px;
-    border: 1px solid maroon;
-}
+
 .serviceDescription{
     width:350px;
     padding:10px;
@@ -144,6 +167,7 @@
     height:auto;
     flex-wrap:wrap;
     align-items: center;
+    border:1px solid pink
 }
 .cardContainer{
     display:flex;
@@ -152,7 +176,7 @@
     height:auto;
     flex-wrap:wrap;
     box-sizing: border-box;
-    padding: 10px 50px 0 50px
+    padding: 10px 30px 0 30px
 }
 .typeCard{
     display:flex;

@@ -69,23 +69,16 @@ const editService = async (req, res) => {
 }
 
 //[DELETE] to delete a service from the database
-// const deleteService = async (req, res) => {
-//     const id = req.params.id
-//     await Services.deleteOne({
-//         _id : id
-//     })
-//     res.json({success: `${id} deleted`})
-// }
+
 const deleteService = async (req, res) => {
     try {
       const id = req.params.id;
-  
       // Check if the service exists before attempting to delete
       const service = await Services.findById(id);
       if (!service) {
         return res.status(404).json({ error: "Service not found" });
       }
-  
+      
       // Perform the deletion
       await Services.deleteOne({ _id: id });
       res.status(200).json({ success: `Service with id ${id} is deleted` });

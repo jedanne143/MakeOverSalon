@@ -65,22 +65,48 @@ const adminPassword = import.meta.env.VITE_PASSWORD
       fetchServices();
     }, []);
 
-    //update a service
-    // const [updateService, setUpdateService] = useState({
-    //   _id: null,
-    //   type: "",
-    //   name: "",
-    //   price:"",
-    //   duration:"",
-    //   description: ""
-    // });
+    //state to track which  service is being edited and the current input values of the service
+    const [editingId, setEditingId] = useState(null);
+    const [editedService, setEditedService] = useState({
+      type: "",
+      name: "",
+      price: "",
+      duration: "",
+      description: ""
+    });
 
-    //updatefunc
-    const editService = async () => {
-      console.log('edit function called')
-    } 
+    //Callback function for EDIT button
+    const handleEdit = (service) => {
+      setEditingId(service._id); 
+      setEditedService({
+        type: service.type,
+        name: service.name,
+        price: service.price,
+        duration: service.duration || '',
+        description: service.description || ''
+      });
+    };
+    // [EDIT] a service in the DB
+    const updateService = async (id) => {
+      try {
+        // Send updated service data to the server
+        const res = await axios.put(`http://localhost:3000/services/${id}`, editedService);
+        console.log(res.data);
+    
+        // Update the services state with the modified service
+        const updatedServices = services.map(service => 
+          service._id === id ? { ...service, ...editedService } : service
+        );
+        setServices(updatedServices);
+        
+        // Exit editing mode
+        setEditingId(null);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-    // [DELETE] a service from DB
+    // [DELETE] a service in the DB
     const deleteService = async (_id) => {
       try{
         const res = await axios.delete(`http://localhost:3000/services/${_id}`)
@@ -149,7 +175,7 @@ const adminPassword = import.meta.env.VITE_PASSWORD
                     <option value='body'>Body</option>
                     <option value='facial'>Facial</option>
                     <option value='hair'>Hair</option>
-                    <option value='nail'>Nail</option>
+                    <option value='nails'>Nails</option>
                   </select>
                 </label>
                 <label className='labelRow'>Name:
@@ -186,7 +212,7 @@ const adminPassword = import.meta.env.VITE_PASSWORD
                 onChange={(e) => setCreateServices({...createService, description: e.target.value})}
                 rows='4'
                 ></textarea>
-                <button type="submit" className='addBtn'>Add</button>
+                <button type="submit" className='button'>Add</button>
               </form>
             </div>
           </div>
@@ -214,26 +240,81 @@ const adminPassword = import.meta.env.VITE_PASSWORD
                 >Nails</div>
               </div>
               <div className='cardContainer'>
-                {services
-                  .filter(service => service.type === toggleState) 
-                  .map(data => (                    
-                    <div key={data._id} className="typeCard">
-                      <div className='bold'>{data.name}</div>
-                      <div>Price: Php {data.price}</div>
-                      {/* Conditionally render duration if it exists */}
-                      {data.duration && <div>Duration: {data.duration}</div>} 
-                      {/* Conditionally render description if it exists */}
-                      {data.description && <div>Description: {data.description}</div>}
-                      <div className="btnContainer">
-                        <EditBtn editService= {editService} data={data}/>
-                        <DeleteBtn deleteService={ deleteService} data={data} />
-                      </div>
-                    </div>
-                  ))
-                }
+              {services
+                .filter(service => service.type === toggleState)
+                .map(data => (
+                  <div key={data._id} className="typeCard">
+                    {editingId === data._id ? (
+                      <>
+                        <label>Type:
+                          <select
+                            className="editDetail"
+                            value={editedService.type}
+                            onChange={(e) => setEditedService({ ...editedService, type: e.target.value })}
+                            required
+                          >
+                            <option value=""></option>
+                            <option value="body">Body</option>
+                            <option value="facial">Facial</option>
+                            <option value="hair">Hair</option>
+                            <option value="nails">Nails</option>
+                          </select>
+                        </label>
+                        <label>Name:
+                          <input
+                            className="editDetail" 
+                            type="text"
+                            value={editedService.name}
+                            onChange={(e) => setEditedService({ ...editedService, name: e.target.value })}
+                          />
+                        </label>
+                        <label>Price:
+                          <input
+                            className="editDetail" 
+                            type="number"
+                            value={editedService.price}
+                            onChange={(e) => setEditedService({ ...editedService, price: Number(e.target.value) })}
+                          />
+                        </label>
+                        <label>Duration:
+                          <input
+                            className="editDetail" 
+                            type="text"
+                            value={editedService.duration}
+                            onChange={(e) => setEditedService({ ...editedService, duration: e.target.value })}
+                          />
+                        </label>
+                        <div>Description:</div>
+                        <textarea
+                          className="editDescription" 
+                          value={editedService.description}
+                          onChange={(e) => setEditedService({ ...editedService, description: e.target.value })}
+                          rows="4"
+                        ></textarea>
+                        <div className="btnContainer">
+                          <button className="button" onClick={() => updateService(data._id)}>Save</button>
+                          <button className="button" onClick={() => setEditingId(null)}>Cancel</button>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                      {/* Will render when not in editing state */}
+                        <div className='bold'>{data.name}</div>
+                        <div>Price: Php {data.price}</div>
+                        {data.duration && <div>Duration: {data.duration}</div>}
+                        {data.description && <div>Description: {data.description}</div>}
+                        <div className="btnContainer">
+                          <EditBtn handleEdit={handleEdit} data={data}/>
+                          <DeleteBtn deleteService={deleteService} data={data} />
+                        </div>
+                      </>
+                    )}
+                  </div>
+                ))
+              }
               </div>
+              
             </div>
-
           </div>
         </div>
       </div>
