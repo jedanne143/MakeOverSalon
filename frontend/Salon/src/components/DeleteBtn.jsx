@@ -1,9 +1,9 @@
 import React from 'react'
 import './DeleteBtn.css'
 
-function DeleteBtn() {
+function DeleteBtn({deleteService , data}) {
   return (
-    <button className="deleteBtn">Delete</button>
+    <button className="deleteBtn" onClick= {() => deleteService(data._id)}>Delete</button>
   )
 }
 

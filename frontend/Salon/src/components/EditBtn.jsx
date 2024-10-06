@@ -1,9 +1,9 @@
 import React from 'react'
 import './EditBtn.css'
 
-function EditBtn() {
+function EditBtn(editService , data) {
   return (
-    <button className="editBtn">Edit</button>
+    <button className="editBtn" onClick= {() => {editService(data)}}>Edit</button>
   )
 }
 

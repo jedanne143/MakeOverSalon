@@ -1,18 +1,9 @@
-  import React, {useState, useEffect} from 'react'
-  import { useNavigate } from 'react-router-dom'
-  import './Admin.css'
-  import axios from 'axios'
-  import EditBtn from '../components/EditBtn';
-import CloseBtn from '../components/DeleteBtn';
-
-  //styling for material UI component
-  const buttonStyle = {
-    color: 'maroon',
-    width: '15px',
-    margin: '5px',
-    backgroundColor: '#DBBFAF',
-    height:'18px'
-  };
+import React, {useState, useEffect} from 'react'
+import { useNavigate } from 'react-router-dom'
+import './Admin.css'
+import axios from 'axios'
+import EditBtn from '../components/EditBtn';
+import DeleteBtn from '../components/DeleteBtn';
 
   //password from .env file
   const adminPassword = import.meta.env.VITE_PASSWORD
@@ -32,32 +23,76 @@ import CloseBtn from '../components/DeleteBtn';
       type: "",
       name: "",
       price:"",
-      duration:"",
+      duration: "",
       description: ""
     });
 
-    //update a service
-    const [updateService, setUpdateService] = useState({
-      _id: null,
-      type: "",
-      name: "",
-      price:"",
-      duration:"",
-      description: ""
-    });
+    //[CREATE] Add a service to DB
+    const addService = async (e) => {
+      try{
+        e.preventDefault();
+        const res = await axios.post("http://localhost:3000/services/add" , createService)
+        //update the Services state with new value
+        setServices(() => [res.data.service, ...services]);
+        // clear the form once services state is updated
+        setCreateServices(() => ({
+          type: "",
+          name: "",
+          price:"",
+          duration:"",
+          description: ""
+        }));
+        console.log("Successfully added a service")
+      } catch(error) {
+        console.log(error)
+      }
+    }
 
-    // Make a request to DB
+    // [READ]  fetch services data from the db
     const fetchServices = async () => {
-      const res = await axios.get("http://localhost:3000/services/view");
-      const salon = await res.data;
-      setServices(salon);
-      console.log(salon);
-
-    };
-
+      try{
+        const res = await axios.get("http://localhost:3000/services/view");
+        const servicesDB = await res.data;
+        setServices(servicesDB.services);
+        console.log('Successfully fetched service data')
+      } catch (error){
+        console.log(error)
+      }
+    }
     useEffect(() => {
       fetchServices();
     }, []);
+
+    //update a service
+    // const [updateService, setUpdateService] = useState({
+    //   _id: null,
+    //   type: "",
+    //   name: "",
+    //   price:"",
+    //   duration:"",
+    //   description: ""
+    // });
+
+    //updatefunc
+    const editService = async () => {
+      console.log('edit function called')
+    } 
+
+    // [DELETE] a service from DB
+    const deleteService = async (_id) => {
+      try{
+        const res = await axios.delete(`http://localhost:3000/services/${_id}`)
+        console.log(res);
+        //return all services except the deleted one
+        const updatedServices = [...services].filter((service) => {
+          return service._id !== _id
+        })
+        setServices(updatedServices);
+      } catch (error){
+        console.log(error)
+      }
+    }
+      
 
     const handleLogin = (e) => {
       // Prevent page refresh
@@ -72,12 +107,7 @@ import CloseBtn from '../components/DeleteBtn';
         navigate('/home'); 
       }
     };
-    const handleClose=() => {
 
-    }
-    const handleEdit=() => {
-
-    }
     return (
       <div className='adminContainer'>
         <div className="login" style={{ display: isAuthenticated ? 'none' : 'flex' }}>
@@ -98,38 +128,67 @@ import CloseBtn from '../components/DeleteBtn';
             </label>
             <button className='submitBtn'>Submit</button>
           </form>
-
         </div>
+        {/* Conditional rendering after admin is authenticated */}
         <div className="displayContainer" style={{ display: isAuthenticated ? 'flex' : 'none' }}>
           <div className="addContainer">
             <h1 className="adminHeading">Add Services</h1>
             <div className="inputContainer">
-              <form className="addForm">
-              <label className='labelRow'>Type:
-              <select name='serviceType' className="inputDetail" required>
-                <option value='body'>Body</option>
-                <option value='facial'>Facial</option>
-                <option value='hair'>Hair</option>
-                <option value='nail'>Nail</option>
-              </select>
-              </label>
+              {/* form for adding a service */}
+              <form className="addForm" onSubmit={addService}>
+                <label className='labelRow'>Type:
+                  <select 
+                    name='serviceType' 
+                    className="inputDetail" 
+                    value={createService.type}
+                    onChange={(e) => setCreateServices({...createService, type: e.target.value})}
+                    required>
+                    <option value=''></option>
+                    <option value='body'>Body</option>
+                    <option value='facial'>Facial</option>
+                    <option value='hair'>Hair</option>
+                    <option value='nail'>Nail</option>
+                  </select>
+                </label>
                 <label className='labelRow'>Name:
-                <input type="text" className="inputDetail" placeholder="*required" required/>
+                  <input 
+                    type="text" 
+                    className="inputDetail" 
+                    placeholder="*required" 
+                    value={createService.name}
+                    onChange={(e) => setCreateServices({...createService, name: e.target.value})}
+                    required
+                  />
                 </label>
                 <label className='labelRow'>Price: 
-                <input type="number" className="inputDetail" placeholder="*required" required/>
+                  <input 
+                    type="number" 
+                    className="inputDetail" 
+                    placeholder="*required"
+                    value={createService.price}
+                    onChange={(e) => setCreateServices({...createService, price: Number(e.target.value)})}
+                    required/>
                 </label>
                 <label className='labelRow'>Duration: 
-                <input type="number" className="inputDetail"/>
+                  <input 
+                    type="text"
+                    className="inputDetail"
+                    value={createService.duration}
+                    onChange={(e) => setCreateServices({...createService, duration: e.target.value})}
+                    />
                 </label>
-                <label className='labelLeft'>Description:</label>
-                <textarea className="serviceDescription" rows='4' > </textarea>
-                <button className='addBtn'>Add</button>
+                <div className='labelLeft'>Description:</div>
+                <textarea 
+                className="serviceDescription" 
+                value={createService.description}
+                onChange={(e) => setCreateServices({...createService, description: e.target.value})}
+                rows='4'
+                ></textarea>
+                <button type="submit" className='addBtn'>Add</button>
               </form>
             </div>
-
-
           </div>
+
           <div className="changeContainer">
             <h1 className="adminHeading">Edit Existing Services</h1>
             {/* Body Services */}
@@ -137,14 +196,18 @@ import CloseBtn from '../components/DeleteBtn';
               <p className='typeHeading'>Body</p>
             {services
               .filter(service => service.type === 'body')
-              .map(body => (                    
-                <div key={body._id} className="bodyCard">
-                  <div className='bold'>{body.name}</div>
-                  <div>Price: Php {body.price}</div>
-                  <div>Duration: {body.duration}</div>
-                  <div>{body.description}</div>
-                  
-                  
+              .map(data => (                    
+                <div key={data._id} className="dataCard">
+                  <div className='bold'>{data.name}</div>
+                  <div>Price: Php {data.price}</div>
+                  {/* Conditionally render duration if it exists */}
+                  {data.duration && <div>Duration: {data.duration}</div>} 
+                  {/* Conditionally render description if it exists */}
+                  {data.description && <div>Description: {data.description}</div>}
+                  <div className="btnContainer">
+                    <EditBtn editService= {editService} data={data}/>
+                    <DeleteBtn deleteService={ deleteService} data={data} />
+                  </div>
                 </div>
               ))
             }
@@ -154,15 +217,17 @@ import CloseBtn from '../components/DeleteBtn';
             <p className='typeHeading'>Facial</p>
             {services
               .filter(service => service.type === 'facial') //facial services only
-              .map(facial => (                    
-                <div key={facial._id} className="facialCard">
-                  <div className='bold'>{facial.name}</div>
-                  <div>Price: Php {facial.price}</div>
-                  <div>Duration: {facial.duration}</div>
-                  <div>Description: {facial.description}</div>
+              .map(data => (                    
+                <div key={data._id} className="facialCard">
+                  <div className='bold'>{data.name}</div>
+                  <div>Price: Php {data.price}</div>
+                  {/* Conditionally render duration if it exists */}
+                  {data.duration && <div>Duration: {data.duration}</div>} 
+                  {/* Conditionally render description if it exists */}
+                  {data.description && <div>Description: {data.description}</div>}
                   <div className="btnContainer">
-                    <EditBtn/>
-                    <CloseBtn />
+                    <EditBtn editService= {editService} data={data}/>
+                    <DeleteBtn deleteService={ deleteService} data={data} />
                   </div>
 
                 </div>

@@ -28,11 +28,9 @@ app.get('/' , (req, res) => {
 })
 //for route imports
 const servicesRouter = require('./routes/servicesRoute')
-const bookingsRouter = require('./routes/bookingsRoute')
 
 //for allocating each router to a specific url path
 app.use('/services' , servicesRouter)
-app.use('/bookings' , bookingsRouter)
 
 
 //for starting the server

@@ -22,8 +22,10 @@ const createService = async (req,res) => {
 //[READ] to read all services available
 const readServices = async (req, res) => {
     try {
-        const services = await Services.find(); 
-        res.json(services);    
+        //get all notes from the database
+        const services = await Services.find();
+        //send it as a response 
+        res.json({services : services});    
     } catch (error) {
         res.status(500).send('Error fetching services data from the database');
     }
@@ -35,9 +37,9 @@ const readService = async (req, res) => {
         const id = req.params.id
         const service = await Services.findById(id)
         // Send the data as JSON in the response 
-        res.json({service:service});    
+        res.json({ service : service });    
     } catch (error) {
-        res.status(500).send('Error fetching services data from the database');
+        res.status(500).send(`Error fetching service id ${id} data from the database`);
     }
 }
 
@@ -46,7 +48,9 @@ const readService = async (req, res) => {
 const editService = async (req, res) => {
     try{
         const id = req.params.id
+        //extract data from the body
         const {type, name, price, duration, description } = req.body
+        //find and update note
         const service =await Services.findByIdAndUpdate(id,{
             type: type,
             name: name,
@@ -55,8 +59,9 @@ const editService = async (req, res) => {
             description: description
         })
         console.log("Successfully edited a service")
-        const updatedService = await Services.findById(id)
-        res.json({service: service})
+        //send the updated note as a response
+        const editedService = await Services.findById(id)
+        res.json({service: editedService})
     } catch (err){
         //for handling Mongoose validation errors
         res.status(400).json({ error: err.message });
@@ -64,13 +69,31 @@ const editService = async (req, res) => {
 }
 
 //[DELETE] to delete a service from the database
+// const deleteService = async (req, res) => {
+//     const id = req.params.id
+//     await Services.deleteOne({
+//         _id : id
+//     })
+//     res.json({success: `${id} deleted`})
+// }
 const deleteService = async (req, res) => {
-    const id = req.params.id
-    await Services.deleteOne({
-        _id : id
-    })
-    res.json({success: `${id} deleted`})
-}
+    try {
+      const id = req.params.id;
+  
+      // Check if the service exists before attempting to delete
+      const service = await Services.findById(id);
+      if (!service) {
+        return res.status(404).json({ error: "Service not found" });
+      }
+  
+      // Perform the deletion
+      await Services.deleteOne({ _id: id });
+      res.status(200).json({ success: `Service with id ${id} is deleted` });
+    } catch (error) {
+      // Handle any errors that occur
+      res.status(500).json({ error: "An error occurred while deleting the service" });
+    }
+  };
 
 module.exports = {
     createService,
