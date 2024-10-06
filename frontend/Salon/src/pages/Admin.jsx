@@ -5,8 +5,8 @@ import axios from 'axios'
 import EditBtn from '../components/EditBtn';
 import DeleteBtn from '../components/DeleteBtn';
 
-  //password from .env file
-  const adminPassword = import.meta.env.VITE_PASSWORD
+//password from .env file
+const adminPassword = import.meta.env.VITE_PASSWORD
 
   function Admin() {
     // state to track user input password
@@ -26,6 +26,8 @@ import DeleteBtn from '../components/DeleteBtn';
       duration: "",
       description: ""
     });
+    //toggle for tabs
+    const [toggleState , setToggleState] = useState('facial')
 
     //[CREATE] Add a service to DB
     const addService = async (e) => {
@@ -191,48 +193,45 @@ import DeleteBtn from '../components/DeleteBtn';
 
           <div className="changeContainer">
             <h1 className="adminHeading">Edit Existing Services</h1>
-            {/* Body Services */}
-            <div className='bodyContainer'>
-              <p className='typeHeading'>Body</p>
-            {services
-              .filter(service => service.type === 'body')
-              .map(data => (                    
-                <div key={data._id} className="dataCard">
-                  <div className='bold'>{data.name}</div>
-                  <div>Price: Php {data.price}</div>
-                  {/* Conditionally render duration if it exists */}
-                  {data.duration && <div>Duration: {data.duration}</div>} 
-                  {/* Conditionally render description if it exists */}
-                  {data.description && <div>Description: {data.description}</div>}
-                  <div className="btnContainer">
-                    <EditBtn editService= {editService} data={data}/>
-                    <DeleteBtn deleteService={ deleteService} data={data} />
-                  </div>
-                </div>
-              ))
-            }
-            </div>
-            {/* Facial Services */}
-            <div className='facialContainer'>
-            <p className='typeHeading'>Facial</p>
-            {services
-              .filter(service => service.type === 'facial') //facial services only
-              .map(data => (                    
-                <div key={data._id} className="facialCard">
-                  <div className='bold'>{data.name}</div>
-                  <div>Price: Php {data.price}</div>
-                  {/* Conditionally render duration if it exists */}
-                  {data.duration && <div>Duration: {data.duration}</div>} 
-                  {/* Conditionally render description if it exists */}
-                  {data.description && <div>Description: {data.description}</div>}
-                  <div className="btnContainer">
-                    <EditBtn editService= {editService} data={data}/>
-                    <DeleteBtn deleteService={ deleteService} data={data} />
-                  </div>
-
-                </div>
-            ))
-            }
+    
+            <div className='typeContainer'>
+              <div className="headingContainer">
+                <div 
+                  className={toggleState === 'facial' ? "typeHeading activeHeading" : "typeHeading"}
+                  onClick = {() => setToggleState('facial')}
+                >Facial</div>
+                <div 
+                  className={toggleState === 'hair' ? "typeHeading activeHeading" : "typeHeading"}
+                  onClick = {() => setToggleState('hair')}
+                >Hair</div>
+                <div 
+                  className={toggleState === 'body' ? "typeHeading activeHeading" : "typeHeading"}
+                  onClick = {() => setToggleState('body')}
+                >Body</div>
+                <div 
+                  className={toggleState === 'nails' ? "typeHeading activeHeading" : "typeHeading"}
+                  onClick = {() => setToggleState('nails')}
+                >Nails</div>
+              </div>
+              <div className='cardContainer'>
+                {services
+                  .filter(service => service.type === toggleState) 
+                  .map(data => (                    
+                    <div key={data._id} className="typeCard">
+                      <div className='bold'>{data.name}</div>
+                      <div>Price: Php {data.price}</div>
+                      {/* Conditionally render duration if it exists */}
+                      {data.duration && <div>Duration: {data.duration}</div>} 
+                      {/* Conditionally render description if it exists */}
+                      {data.description && <div>Description: {data.description}</div>}
+                      <div className="btnContainer">
+                        <EditBtn editService= {editService} data={data}/>
+                        <DeleteBtn deleteService={ deleteService} data={data} />
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
             </div>
 
           </div>
