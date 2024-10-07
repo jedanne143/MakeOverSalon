@@ -142,8 +142,11 @@ const adminPassword = import.meta.env.VITE_PASSWORD
 
     return (
       <div className='adminContainer'>
-        <div className="login" style={{ display: isAuthenticated ? 'none' : 'flex' }}>
+        <div className='inputContainer' style={{ display: isAuthenticated ? 'none' : 'flex' }}>
+          <img className= 'dividerUp' src='/divider.png' />
           <h1 className="adminHeading">Hello Admin!</h1>
+        </div>
+        <div className="login" style={{ display: isAuthenticated ? 'none' : 'flex' }}>
           <img className="iconLady" src='/iconLady.png' />
           <form className="login" onSubmit={handleLogin}> 
             <label className='labelCol'>Enter password
@@ -189,15 +192,17 @@ const adminPassword = import.meta.env.VITE_PASSWORD
                     className="inputDetail" 
                     value={createService.subtype}
                     onChange={(e) => setCreateServices({...createService, subtype: e.target.value})}
-                    required>
-                    <option value=''>*Optional field*</option>
+                  >
+                    <option value=''></option>
                     <option value='treatment'>Hair Treatment</option>
                     <option value='color'>Hair Color</option>
                     <option value='basic'>Hair Basic</option>
                     <option value='hair_removal diode'>Hair Removal DIODE</option>
                     <option value='hair_removal IPL'>Hair Removal IPL</option>
-                    <option value='facial_makeup SemiPermanent'>Semi Permanent Makeup</option>
-                    <option value='body_aesthetic Mesolipo'>Mesolipo</option>
+                    <option value='facial_spa general'>Face General</option>
+                    <option value='facial_makeup SemiPermanent'>Face Semi Permanent Makeup</option>
+                    <option value='body_aesthetic general'>Body General</option>
+                    <option value='body_aesthetic Mesolipo'>Body Mesolipo</option>
                   </select>
                 </label>
                 <label className='labelRow'>Name:
@@ -289,14 +294,16 @@ const adminPassword = import.meta.env.VITE_PASSWORD
                             value={editedService.subtype}
                             onChange={(e) => setEditedService({...editedService, subtype: e.target.value})}
                           >
-                            <option value=''>*Optional*</option>
+                            <option value=''></option>
                             <option value='treatment'>Hair Treatment</option>
                             <option value='color'>Hair Color</option>
                             <option value='basic'>Hair Basic</option>
                             <option value='hair_removal diode'>Hair Removal DIODE</option>
                             <option value='hair_removal IPL'>Hair Removal IPL</option>
-                            <option value='facial_makeup SemiPermanent'>Semi Permanent Makeup</option>
-                            <option value='body_aesthetic Mesolipo'>Mesolipo</option>
+                            <option value='facial_spa general'>Face General</option>
+                            <option value='facial_makeup SemiPermanent'>Face Semi Permanent Makeup</option>
+                            <option value='body_aesthetic general'>Body General</option>
+                            <option value='body_aesthetic Mesolipo'>Body Mesolipo</option>
                           </select>
                         </label>
                         <label>Name:

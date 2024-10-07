@@ -3,7 +3,6 @@
     flex-wrap:wrap;
     margin:0;
     width: '100%';
-    min-width: 670px;
     height:'auto';
     flex-direction: 'column';
     box-sizing:'border-box'

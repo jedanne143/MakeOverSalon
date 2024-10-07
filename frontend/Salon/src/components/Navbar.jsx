@@ -12,37 +12,25 @@ function Navbar() {
     }
   return (
     <nav className="navbar">
-        <div className='brandContainer'>
+        <div className='navbar__brand'>
         <NavLink to="/home" onClick= {handleLink}>
-          <img className='logo' src='../logo.png' />
+          <img className='navbar__logo' src='../logo.png' />
         </NavLink> 
         </div>
         {/* Conditional rendering for hamburger icon */}
-        <div className="hamburgerIcon" onClick={() => setMenuOpen(!menuOpen)}>
-          <span></span>
-          <span></span>
-          <span></span>
+        <div className="navbar__hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+          <span className='hamburgerLine'></span>
+          <span className='hamburgerLine'></span>
+          <span className='hamburgerLine'></span>
         </div>
 
-        <div className={menuOpen ? "open" : ""}>
-          <NavLink className="navItem"  to="/home" onClick= {handleLink}>Home</NavLink> 
-          <NavLink className="navItem" to="/services" onClick= {handleLink}>Services </NavLink>
-          <NavLink className="navItem" to="/bookings" onClick= {handleLink}>
-            {/* <CalendarMonthRoundedIcon
-              sx={{    
-                height: '18px',
-                verticalAlign: 'middle'
-              }} 
-            /> */}
+        <div className={menuOpen ? "open navbar__navs" : "navbar__navs"}>
+          <NavLink className="navbar__item"  to="/home" onClick= {handleLink}>Home</NavLink> 
+          <NavLink className="navbar__item" to="/services" onClick= {handleLink}>Services </NavLink>
+          <NavLink className="navbar__item" to="/bookings" onClick= {handleLink}>
             Bookings 
           </NavLink>
-          <NavLink className="navItem" to="/socials" onClick= {handleLink}>
-            {/* <MobileScreenShareRoundedIcon
-            sx={{    
-              height: '18px',
-              verticalAlign: 'middle'
-            }} 
-            /> */}
+          <NavLink className="navbar__item" to="/socials" onClick= {handleLink}>
             Socials
           </NavLink>
         </div>
