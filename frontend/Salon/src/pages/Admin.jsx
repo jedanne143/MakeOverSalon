@@ -21,6 +21,7 @@ const adminPassword = import.meta.env.VITE_PASSWORD
     //input for services
     const [createService, setCreateServices] = useState({
       type: "",
+      subtype: "",
       name: "",
       price:"",
       duration: "",
@@ -39,6 +40,7 @@ const adminPassword = import.meta.env.VITE_PASSWORD
         // clear the form once services state is updated
         setCreateServices(() => ({
           type: "",
+          subtype: "",
           name: "",
           price:"",
           duration:"",
@@ -69,6 +71,7 @@ const adminPassword = import.meta.env.VITE_PASSWORD
     const [editingId, setEditingId] = useState(null);
     const [editedService, setEditedService] = useState({
       type: "",
+      subtype: "",
       name: "",
       price: "",
       duration: "",
@@ -80,6 +83,7 @@ const adminPassword = import.meta.env.VITE_PASSWORD
       setEditingId(service._id); 
       setEditedService({
         type: service.type,
+        subtype: service.subtype || '',
         name: service.name,
         price: service.price,
         duration: service.duration || '',
@@ -160,6 +164,7 @@ const adminPassword = import.meta.env.VITE_PASSWORD
         {/* Conditional rendering after admin is authenticated */}
         <div className="displayContainer" style={{ display: isAuthenticated ? 'flex' : 'none' }}>
           <div className="addContainer">
+            <img className= 'dividerUp' src='/divider.png' /> 
             <h1 className="adminHeading">Add Services</h1>
             <div className="inputContainer">
               {/* form for adding a service */}
@@ -171,11 +176,28 @@ const adminPassword = import.meta.env.VITE_PASSWORD
                     value={createService.type}
                     onChange={(e) => setCreateServices({...createService, type: e.target.value})}
                     required>
-                    <option value=''></option>
+                    <option value=''>*Required</option>
                     <option value='body'>Body</option>
                     <option value='facial'>Facial</option>
                     <option value='hair'>Hair</option>
                     <option value='nails'>Nails</option>
+                  </select>
+                </label>
+                <label className='labelRow'>Subtype:
+                  <select 
+                    name='serviceSubtype' 
+                    className="inputDetail" 
+                    value={createService.subtype}
+                    onChange={(e) => setCreateServices({...createService, subtype: e.target.value})}
+                    required>
+                    <option value=''>*Optional field*</option>
+                    <option value='treatment'>Hair Treatment</option>
+                    <option value='color'>Hair Color</option>
+                    <option value='basic'>Hair Basic</option>
+                    <option value='hair_removal diode'>Hair Removal DIODE</option>
+                    <option value='hair_removal IPL'>Hair Removal IPL</option>
+                    <option value='facial_makeup SemiPermanent'>Semi Permanent Makeup</option>
+                    <option value='body_aesthetic Mesolipo'>Mesolipo</option>
                   </select>
                 </label>
                 <label className='labelRow'>Name:
@@ -218,14 +240,14 @@ const adminPassword = import.meta.env.VITE_PASSWORD
           </div>
 
           <div className="changeContainer">
+            <img className= 'dividerUp' src='/divider.png' />
             <h1 className="adminHeading">Edit Existing Services</h1>
-    
             <div className='typeContainer'>
               <div className="headingContainer">
                 <div 
                   className={toggleState === 'facial' ? "typeHeading activeHeading" : "typeHeading"}
                   onClick = {() => setToggleState('facial')}
-                >Facial</div>
+                >Face</div>
                 <div 
                   className={toggleState === 'hair' ? "typeHeading activeHeading" : "typeHeading"}
                   onClick = {() => setToggleState('hair')}
@@ -258,6 +280,23 @@ const adminPassword = import.meta.env.VITE_PASSWORD
                             <option value="facial">Facial</option>
                             <option value="hair">Hair</option>
                             <option value="nails">Nails</option>
+                          </select>
+                        </label>
+                        <label>Subtype:
+                          <select 
+                            name='serviceSubtype' 
+                            className="editDetail" 
+                            value={editedService.subtype}
+                            onChange={(e) => setEditedService({...editedService, subtype: e.target.value})}
+                          >
+                            <option value=''>*Optional*</option>
+                            <option value='treatment'>Hair Treatment</option>
+                            <option value='color'>Hair Color</option>
+                            <option value='basic'>Hair Basic</option>
+                            <option value='hair_removal diode'>Hair Removal DIODE</option>
+                            <option value='hair_removal IPL'>Hair Removal IPL</option>
+                            <option value='facial_makeup SemiPermanent'>Semi Permanent Makeup</option>
+                            <option value='body_aesthetic Mesolipo'>Mesolipo</option>
                           </select>
                         </label>
                         <label>Name:
@@ -299,6 +338,7 @@ const adminPassword = import.meta.env.VITE_PASSWORD
                     ) : (
                       <>
                       {/* Will render when not in editing state */}
+                        <div>SubType: {data.subtype}</div>
                         <div className='bold'>{data.name}</div>
                         <div>Price: Php {data.price}</div>
                         {data.duration && <div>Duration: {data.duration}</div>}

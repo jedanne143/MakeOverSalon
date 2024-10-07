@@ -25,6 +25,11 @@
     align-items:center;
     width:auto;
     height:auto;
+    background-color: rgb(119, 43, 43);
+    padding: 0 20px;
+    border-radius: 20px;
+    color:white;
+    margin:10px;
 }
 .typeHeading{
     display:flex;
@@ -71,7 +76,7 @@
     display:flex;
     flex-direction:column;
     width:auto;
-    align-items: flex-end;
+    align-items: center
 }
 .addContainer, .changeContainer{
     display:flex;
@@ -80,7 +85,6 @@
     padding: 20px;
     width:100%;
     height:auto;
-    border: 1px solid green
 }
 .iconLady{
     width:100px;
@@ -167,7 +171,6 @@
     height:auto;
     flex-wrap:wrap;
     align-items: center;
-    border:1px solid pink
 }
 .cardContainer{
     display:flex;
@@ -184,7 +187,6 @@
     width:100%;
     height:auto;
     padding: 10px 30px;
-    /* border:1px solid maroon; */
     border-radius:10px;
     margin:0px  0 10px 0;
     flex-wrap:wrap;
@@ -195,4 +197,15 @@
 .bold{
     font-weight: bold;
     font-family:Arial, Helvetica, sans-serif
+}
+.dividerUp{
+    width:250px;
+    transform: scaleY(-1);
+    /* filter: invert(1);  */
+}
+
+.dividerDown{
+    margin: 10px 0 20px 0 ;
+    width:250px;
+    /* filter: invert(1);  */
 }

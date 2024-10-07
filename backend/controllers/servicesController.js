@@ -3,9 +3,10 @@ const Services = require ('../models/services.js')
 //[CREATE] to add a service to the database
 const createService = async (req,res) => {
     try{
-        const {type, name, price, duration, description } = req.body
+        const {type, subtype, name, price, duration, description } = req.body
         const service = await Services.create({
             type: type,
+            subtype: subtype,
             name: name,
             price: price,
             duration: duration,
@@ -49,10 +50,11 @@ const editService = async (req, res) => {
     try{
         const id = req.params.id
         //extract data from the body
-        const {type, name, price, duration, description } = req.body
+        const {type, subtype, name, price, duration, description } = req.body
         //find and update note
         const service =await Services.findByIdAndUpdate(id,{
             type: type,
+            subtype: subtype,
             name: name,
             price: price,
             duration:duration,
@@ -78,7 +80,7 @@ const deleteService = async (req, res) => {
       if (!service) {
         return res.status(404).json({ error: "Service not found" });
       }
-      
+
       // Perform the deletion
       await Services.deleteOne({ _id: id });
       res.status(200).json({ success: `Service with id ${id} is deleted` });

@@ -6,6 +6,7 @@ const serviceSchema = new mongoose.Schema({
         //validation with custom error message
         required: [true, 'Service type input is required']
     },
+    subtype : String,
     name: { 
         type: String, 
         //validation with custom error message
