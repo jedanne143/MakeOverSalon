@@ -143,9 +143,10 @@ const adminPassword = import.meta.env.VITE_PASSWORD
     return (
       <div className='adminContainer'>
         <div className='inputContainer' style={{ display: isAuthenticated ? 'none' : 'flex' }}>
-          <img className= 'dividerUp' src='/divider.png' />
-          <h1 className="adminHeading">Hello Admin!</h1>
+          
+          <h1 className="loginHeading">Hello Admin!</h1>
         </div>
+        <img className= 'dividerUp' src='/divider.png' style={{ display: isAuthenticated ? 'none' : 'flex' }}/>
         <div className="login" style={{ display: isAuthenticated ? 'none' : 'flex' }}>
           <img className="iconLady" src='/iconLady.png' />
           <form className="login" onSubmit={handleLogin}> 
@@ -164,6 +165,7 @@ const adminPassword = import.meta.env.VITE_PASSWORD
             <button className='submitBtn'>Submit</button>
           </form>
         </div>
+        <img className= 'dividerDown' src='/divider.png' style={{ display: isAuthenticated ? 'none' : 'flex' }} />
         {/* Conditional rendering after admin is authenticated */}
         <div className="displayContainer" style={{ display: isAuthenticated ? 'flex' : 'none' }}>
           <div className="addContainer">
@@ -300,8 +302,8 @@ const adminPassword = import.meta.env.VITE_PASSWORD
                             <option value='basic'>Hair Basic</option>
                             <option value='hair_removal diode'>Hair Removal DIODE</option>
                             <option value='hair_removal IPL'>Hair Removal IPL</option>
-                            <option value='facial_spa general'>Face General</option>
-                            <option value='facial_makeup SemiPermanent'>Face Semi Permanent Makeup</option>
+                            <option value='general'>Face General</option>
+                            <option value='semipermanent'>Face Semi Permanent Makeup</option>
                             <option value='body_aesthetic general'>Body General</option>
                             <option value='body_aesthetic Mesolipo'>Body Mesolipo</option>
                           </select>

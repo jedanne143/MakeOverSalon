@@ -14,12 +14,11 @@
     display:flex;
     flex-direction:column;
     align-items:center;
-    padding: 10px;
+    padding: 20px;
     width:auto;
     height:auto;
     color:white;
     background-color: rgb(119, 43, 43);
-    margin:30px;
     border-radius:20px
 }
 .addForm{
@@ -45,6 +44,7 @@
     border-radius: 10px;
     height:auto;
     width:auto;
+    box-shadow: 2px 2px 5px black
 }
 .activeHeading{
     font-family: 'Qwitcher Grypen', cursive;
@@ -54,6 +54,7 @@
     background-color: #DBBFAF;
     padding:5px 10px;
     border-radius: 10px;
+    box-shadow: 3px 3px 5px black;
 
 }
 .headingContainer{
@@ -99,6 +100,13 @@
     border:3px solid maroon;
     border-radius: 10px;
     text-align: center;
+}
+.loginHeading{
+    width:250px;
+    font-family: 'Qwitcher Grypen', cursive;
+    border-radius: 10px;
+    text-align: center;
+    margin:20px
 }
 .labelCol{
     text-align: center;
@@ -173,13 +181,12 @@
 .typeContainer{
     display:flex;
     flex-direction:column;
-    width:100%;
+    width:95%;
     height:auto;
     flex-wrap:wrap;
     align-items: center;
     background-color: rgb(119, 43, 43);
     border-radius: 20px;
-    padding: 10px;
     margin:10px
 
 }
@@ -187,7 +194,7 @@
     display:flex;
     flex-direction:row;
     flex-wrap: wrap;
-    width:90%;
+    width:95%;
     height:auto;
     box-sizing: border-box;
     padding: 10px;
@@ -196,7 +203,7 @@
 .typeCard{
     display:flex;
     flex-direction:column;
-    width:330px;
+    width:320px;
     height:auto;
     padding: 10px 30px;
     border-radius:10px;
@@ -209,7 +216,10 @@
 }
 .bold{
     font-weight: bold;
-    font-family:Arial, Helvetica, sans-serif
+    font-family:Arial, Helvetica, sans-serif;
+    color:maroon;
+    text-transform: uppercase;
+    font-size: 15px;
 }
 .dividerUp{
     width:250px;
@@ -219,7 +229,6 @@
 }
 
 .dividerDown{
-    margin: 10px 0 20px 0 ;
     width:250px;
     /* filter: invert(1);  */
 }
