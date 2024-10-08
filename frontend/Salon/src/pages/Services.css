@@ -10,8 +10,8 @@
     display:flex;
     flex-direction: column;
     width:80%;
+    min-height:600px;
     height:auto;
-    flex-wrap:wrap;
     background-color: rgb(119, 43, 43);
     padding:30px;
     border-radius: 20px;
@@ -21,6 +21,7 @@
 .subTypeContainer{
     display:flex;
     flex-direction: column;
+    width:100%;
     background-color:rgb(246, 241, 238);
     padding: 20px;
     border-radius:20px;
@@ -35,7 +36,7 @@
     border-radius: 10px 10px 0 0;
     border-bottom:none;
     padding:5px 30px 5px 30px ;
-    min-width:250px;
+    min-width:230px;
     justify-content: center;
 }
 .servicesHeading{
@@ -71,7 +72,7 @@
 }
 .alignLeft{
     text-align: justify;
-    width:100%
+    width:100%;
 }
 .servicesCard:last-child .subdivider {
     display: none; /* Hide divider for the last service */
@@ -93,9 +94,51 @@
 .conditionalFace , .conditionalBody, .conditionalNails  , .conditionalHair{
     flex-direction:column;
     align-items: center;
+    width:100%
 }
+.underline{
+    text-decoration: underline;
+    margin: 5px 0;
+    color:black;
+    font-weight: bold;
+    
+}
+.smallerDivider{
+    width:150px;
+    margin:10px auto;
+}
+.rowInitially{
+    display: flex;
+    flex-direction:row;
+    width:100%;
+    height:auto;
+}
+
 @media (max-width:700px){
     .servicesTypeContainer{
+        display:flex;
+        flex-direction:column;
+        height:auto;
         width:100%;
+        padding:10px;
+    }
+    .subTypeContainer{
+        display:flex;
+        width:100%;
+        padding: 15px
+    }
+    .priceOnly{
+        padding:10px;
+        width:300px
+    }
+    .subTypeHeading{
+        padding:5px
+    }
+    .rowInitially{
+        display:flex;
+        flex-direction: column-reverse;
+        width:100%;
+        height:auto;
+        flex-wrap: wrap
     }
 }

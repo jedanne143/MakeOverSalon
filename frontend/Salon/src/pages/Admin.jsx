@@ -205,6 +205,7 @@ const adminPassword = import.meta.env.VITE_PASSWORD
                     <option value='facial_makeup SemiPermanent'>Face Semi Permanent Makeup</option>
                     <option value='body_aesthetic general'>Body General</option>
                     <option value='body_aesthetic Mesolipo'>Body Mesolipo</option>
+                    <option value='nails_general'>Nails General</option>
                   </select>
                 </label>
                 <label className='labelRow'>Name:
@@ -306,6 +307,7 @@ const adminPassword = import.meta.env.VITE_PASSWORD
                             <option value='semipermanent'>Face Semi Permanent Makeup</option>
                             <option value='body_aesthetic general'>Body General</option>
                             <option value='body_aesthetic Mesolipo'>Body Mesolipo</option>
+                            <option value='nails_general'>Nails General</option>
                           </select>
                         </label>
                         <label>Name:

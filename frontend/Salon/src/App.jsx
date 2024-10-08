@@ -14,6 +14,7 @@ function App() {
     
     <main className="mainContainer">
       <Navbar />
+      {/* Pages to show */}
       <Routes>
         {/* Redirect from root path '/' to '/home' */}
         <Route path='/' element={<Navigate to='/home' replace />}/>
