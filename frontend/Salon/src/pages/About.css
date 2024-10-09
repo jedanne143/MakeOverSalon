@@ -1,0 +1,120 @@
+.aboutContainer{
+    display: flex;
+    flex:1;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    height:auto;
+    flex-wrap:wrap;
+    padding:20px
+}
+.storyContainer{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    height:auto;
+    justify-content: center;
+    align-items: center;
+    margin:10px
+}
+.imageOwner{
+    display:flex;
+    flex:auto;
+    width:50%;
+    max-width: 535px;
+    height:auto;
+    border-radius: 10px;    
+    margin-top:auto;
+    margin-bottom:auto;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width:100%;
+    padding:30px;
+    height:auto;
+    color: seashell;
+    justify-content: space-around;
+    border-radius: 20px; 
+}
+.col{
+    display:flex;
+    flex-direction: column;
+    width:50%;
+    height:auto;
+    justify-content: space-around;  
+    padding:30px 50px;
+    align-items: center;
+
+}
+.justify{
+    text-align: justify;
+    font-size: 19px
+}
+.space{
+    margin:15px
+}
+.googleMap{
+    border-radius: 20px;
+    border:2px solid maroon!important
+}
+.maroonbg{
+    background-color: rgb(119, 43, 43);
+}
+.icon{
+
+    width: 60px;
+    margin: 0 7px;
+    transition: transform 0.2s
+}
+.icon:hover{
+   transform: scale(1.1)
+}
+.tiktok {
+    border: 3px solid rgba(9, 9, 9, 0.841);
+    border-radius: 20px;
+    width: 57px;
+}
+.iconContainer{
+    display: flex;
+    flex-direction:row;
+    margin: 10px;
+    justify-content: center;
+    align-items:center;
+}
+.iconSmall{
+    height:40px;
+    width:auto
+}
+strong{
+    color: white;
+}
+@media (max-width:1000px) {
+    .row{
+        flex-direction: column;
+        width:100%;
+        height:auto;
+        flex-wrap: wrap;
+        align-items:  center;
+        padding:10px
+    }
+    .imageOwner{
+        width:300px;
+        padding:10px;
+        margin:0;
+    }
+    .col{
+        display:flex;
+        width:100%;
+        height:auto;
+        padding:10px;
+        text-align: center;
+    }
+    .storyContainer{
+        margin:5px
+    }
+}
+

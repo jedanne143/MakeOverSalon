@@ -3,11 +3,10 @@ import './Services.css'
 import axios from 'axios'
 
 function Services() {
-  //state to save fetched services
   const [services, setServices] =useState([])
-  //toggle for tabs
+  //toggle for service type
   const [toggleState , setToggleState] = useState('facial')
-  // [READ]  fetch services data from the db
+  //fetch data from the db
   const fetchServices = async () => {
     try{
       const res = await axios.get("http://localhost:3000/services/view");
@@ -22,10 +21,11 @@ function Services() {
   useEffect(() => {
     fetchServices();
   }, []);
+
   
   return (
     <div className="servicesContainer">
-      <h1 className="servicesHeading">Our Services</h1>
+      <h1 className="mainHeading">Our Services</h1>
       <div className="servicesTypeContainer">
         <div className="headingContainer">
           <div 

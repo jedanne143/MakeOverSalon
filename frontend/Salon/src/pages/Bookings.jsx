@@ -1,5 +1,5 @@
 import React from 'react'
-'./Bookings.css'
+import './Bookings.css'
 function Bookings() {
   return (
     <div>Bookings</div>

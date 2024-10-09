@@ -39,10 +39,13 @@
     min-width:230px;
     justify-content: center;
 }
-.servicesHeading{
+.mainHeading{
+    width:100%;
+    text-align:center;
     font-family: 'Qwitcher Grypen', cursive;
     font-size: 45px;
-    color:maroon
+    color:maroon;
+    margin-bottom:5px
 }
 .rowService{
     display:flex;
@@ -64,6 +67,11 @@
     margin-top:20px;
     filter: invert(1); 
 }
+.dividerDownWhite{
+    width:250px;
+    margin-top:20px;
+    filter: invert(1); 
+}
 .subdivider{
     height:20px;
     width:auto;
@@ -74,8 +82,9 @@
     text-align: justify;
     width:100%;
 }
+/* Hide divider for the last service */
 .servicesCard:last-child .subdivider {
-    display: none; /* Hide divider for the last service */
+    display: none;
 }
 .priceOnly{
     width: 400px;

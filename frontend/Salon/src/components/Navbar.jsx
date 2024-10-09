@@ -28,10 +28,11 @@ function Navbar() {
           <NavLink className="navbar__item"  to="/home" onClick= {handleLink}>Home</NavLink> 
           <NavLink className="navbar__item" to="/services" onClick= {handleLink}>Services </NavLink>
           <NavLink className="navbar__item" to="/bookings" onClick= {handleLink}>
+            <img className='calendarIcon' src='/calendar.png' />
             Bookings 
           </NavLink>
-          <NavLink className="navbar__item" to="/socials" onClick= {handleLink}>
-            Socials
+          <NavLink className="navbar__item" to="/about" onClick= {handleLink}>
+            About Us
           </NavLink>
         </div>
 

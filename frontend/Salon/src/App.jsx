@@ -3,9 +3,9 @@ import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Services from './pages/Services'
 import Bookings from './pages/Bookings'
-import Socials from './pages/Socials'
+import About from './pages/About'
 import Admin from './pages/Admin'
-'./App.css'
+import './App.css'
 
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
         <Route path='/home' element={<Home/>}/>
         <Route path='/services' element={<Services/>} />
         <Route path='/bookings' element ={<Bookings/>} />
-        <Route path='/socials' element = {<Socials/>} />
+        <Route path='/about' element = {<About/>} />
         <Route path= '/admin' element = {<Admin/>} />
       </Routes>
     </main>
@@ -29,4 +29,3 @@ function App() {
   )
 }
 export default App
-

@@ -58,6 +58,8 @@
 }
 
 .navbar__item {
+    display:flex;
+    width:auto;
     text-decoration: none;
     margin: 0 10px;
     transition: color 0.2s, background-color 0.2s;
@@ -73,6 +75,10 @@
     background-color: rgb(241, 231, 231);
 }
 
+.calendarIcon{
+    height:18px;
+    margin-right:5px
+}
 /* Media Queries */
 @media (max-width: 700px) {
     .navbar{
