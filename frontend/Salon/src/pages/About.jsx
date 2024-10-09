@@ -80,9 +80,6 @@ function About() {
       <div className="iconContainer">
         <img className='iconSmall' src='/call.png' /> +63 919 001 9630
       </div>
-      <div className="iconContainer">
-        <img className='iconSmall' src='/message.png' /> makeover.beautylounge@gmail.com
-      </div>
     </div>
   )
 }

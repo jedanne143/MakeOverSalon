@@ -34,7 +34,7 @@ const adminPassword = import.meta.env.VITE_PASSWORD
     const addService = async (e) => {
       try{
         e.preventDefault();
-        const res = await axios.post("http://localhost:3000/services/add" , createService)
+        const res = await axios.post("https://makeoversalon-website.onrender.com/services/add" , createService)
         //update the Services state with new value
         setServices(() => [res.data.service, ...services]);
         // clear the form once services state is updated
@@ -55,7 +55,7 @@ const adminPassword = import.meta.env.VITE_PASSWORD
     // [READ]  fetch services data from the db
     const fetchServices = async () => {
       try{
-        const res = await axios.get("http://localhost:3000/services/view");
+        const res = await axios.get("https://makeoversalon-website.onrender.com/services/view");
         const servicesDB = await res.data;
         setServices(servicesDB.services);
         console.log('Successfully fetched service data')
@@ -94,7 +94,7 @@ const adminPassword = import.meta.env.VITE_PASSWORD
     const updateService = async (id) => {
       try {
         // Send updated service data to the server
-        const res = await axios.put(`http://localhost:3000/services/${id}`, editedService);
+        const res = await axios.put(`https://makeoversalon-website.onrender.com/services/${id}`, editedService);
         console.log(res.data);
     
         // Update the services state with the modified service
@@ -113,7 +113,7 @@ const adminPassword = import.meta.env.VITE_PASSWORD
     // [DELETE] a service in the DB
     const deleteService = async (_id) => {
       try{
-        const res = await axios.delete(`http://localhost:3000/services/${_id}`)
+        const res = await axios.delete(`https://makeoversalon-website.onrender.com/services/${_id}`)
         console.log(res);
         //return all services except the deleted one
         const updatedServices = [...services].filter((service) => {
@@ -275,6 +275,7 @@ const adminPassword = import.meta.env.VITE_PASSWORD
                 .map(data => (
                   <div key={data._id} className="typeCard">
                     {editingId === data._id ? (
+                      //will render when editing button is clicked
                       <>
                         <label>Type:
                           <select

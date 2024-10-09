@@ -12,7 +12,9 @@ connectToDb();
 const cors = require('cors');
 //allow requests from frontend
 app.use(express.json())
-app.use(cors()); 
+app.use(cors({
+    origin: 'https://makeoversalon.netlify.app/'
+})); 
 
 //=========MIDDLEWARES==========
 app.use(express.json());

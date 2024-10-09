@@ -9,7 +9,7 @@ function Services() {
   //fetch data from the db
   const fetchServices = async () => {
     try{
-      const res = await axios.get("http://localhost:3000/services/view");
+      const res = await axios.get("https://makeoversalon-website.onrender.com/services/view");
       const servicesDB = await res.data;
       setServices(servicesDB.services);
       console.log('Successfully fetched service data')
