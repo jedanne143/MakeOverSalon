@@ -58,7 +58,8 @@
     margin:15px
 }
 .googleMap{
-    border-radius: 20px;
+    border-radius: 35px;
+
 }
 .maroonbg{
     background-color: rgb(119, 43, 43);
@@ -68,6 +69,7 @@
     margin: 0 7px;
     transition: transform 0.2s;
     border-radius: 20px;
+    background-image: radial-gradient(#DBBFAF 10%, white);
 }
 .icon:hover{
    transform: scale(1.1)
@@ -123,6 +125,16 @@ strong{
     display:flex;
     color:black;
 }
+.iframeContainer{
+    display:flex;
+    width:auto;
+    height: auto;
+    padding: 50px;
+    background-image: url(/border2.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
 @media (max-width:1000px) {
     .row{
         flex-direction: column;
@@ -149,9 +161,16 @@ strong{
     }
     .businessCol{
         width:100%;
+        background-image: url(/border2.png);
+        
     }
     .businessLeftCol{
         width:100%;
+  
+    }
+    .iframeContainer{
+        padding:100px;
+        background-image: url(/border.png);
     }
 }
 
