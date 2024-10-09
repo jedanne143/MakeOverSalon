@@ -44,7 +44,8 @@
     border-radius: 10px;
     height:auto;
     width:auto;
-    box-shadow: 2px 2px 5px black
+    box-shadow: 2px 2px 5px black;
+    flex-direction: column;
 }
 .activeHeading{
     font-family: 'Qwitcher Grypen', cursive;
@@ -86,8 +87,6 @@
     padding: 20px;
     width:100%;
     height:auto;
-    
-
 }
 .iconLady{
     width:100px;
@@ -168,7 +167,6 @@
 .submitBtn:hover, .addBtn:hover{
     background-color: #DBBFAF
 }
-
 .serviceDescription{
     width:350px;
     padding:10px;
@@ -177,7 +175,6 @@
     margin:10px;
     height:auto
 }
-
 .typeContainer{
     display:flex;
     flex-direction:column;

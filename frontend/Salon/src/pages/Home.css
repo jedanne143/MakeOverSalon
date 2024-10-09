@@ -1,20 +1,54 @@
-.homeContainer{
+.homeContainer {
     display: flex;
-    align-items:center;
-    justify-content: center;
-    flex:1;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw; 
+    min-height: 100vh; 
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
-    margin:0;
-    padding:0;
-}
-.homeContainer img{
-    display:flex;
-    margin:0;
-    padding:0;
-    object-fit: cover;
-    width:100%
-}
-.aspectRatio{
-    display:flex
-}
+    height:auto;
+  }
+  .aspectRatio {
+    width: 100%;
+    height: auto; 
+    max-width: 900px; 
+    padding:10px
+  }
+  .homeImage {
+    width: 100%;
+    height: auto; 
+    display: block;
+    border-radius: 20px;
+  }
+  .rowContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+  }
+  .iconLarge{
+    width:120px;
+    height:auto;
+    margin:10px;
+  }
+  .iconHeading{
+    font-family: 'Qwitcher Grypen', cursive;
+    font-size: 35px; 
+    color:maroon;
+    text-shadow: 2px 2px 5px #DBBFAF;
+  }
+  .strong{
+    font-weight: bold
+  }
+
+  @media (max-width: 700px){
+    .iconLarge{
+        width:75px;
+    }
+  }

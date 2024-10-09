@@ -4,8 +4,8 @@ import axios from 'axios'
 
 function Services() {
   const [services, setServices] =useState([])
-  //toggle for service type
-  const [toggleState , setToggleState] = useState('facial')
+  //toggle for service types
+  const [toggleState , setToggleState] = useState('nails')
   //fetch data from the db
   const fetchServices = async () => {
     try{
@@ -29,6 +29,12 @@ function Services() {
       <div className="servicesTypeContainer">
         <div className="headingContainer">
           <div 
+              className={toggleState === "nails" ? "typeHeading activeHeading" : "typeHeading"}
+              onClick = {() => setToggleState('nails')}
+            >
+              Nails
+            </div>
+          <div 
             className={toggleState === "facial" ? "typeHeading activeHeading" : "typeHeading"}
             onClick = {() => setToggleState('facial')}
           >Face</div>
@@ -40,11 +46,29 @@ function Services() {
             className={toggleState === "body" ? "typeHeading activeHeading" : "typeHeading"}
             onClick = {() => setToggleState('body')}
           >Body</div>
-          <div 
-            className={toggleState === "nails" ? "typeHeading activeHeading" : "typeHeading"}
-            onClick = {() => setToggleState('nails')}
-          >Nails</div>
+
         </div>
+        {/* =====NAILS SERVICES====== */}
+        <> 
+          <div className="conditionalNails" style={{ display: toggleState === 'nails' ? 'flex' : 'none' }}>
+            <img className="servicesImage" src='/nailextension.jpg' />
+            <img className= 'dividerUpWhite' src='/divider.png'  />
+            <div className='subTypeHeading'>BASIC</div>
+            <div className="priceOnly">
+              {services
+                .filter((service) => service.type === toggleState && service.subtype === 'nails_general')
+                .map((service) => (
+                  <div key={service._id} className="servicesCard">
+                    <div className="rowService">
+                      <div className='priceOnlyName'>{service.name} </div>
+                      <div>Php {service.price}</div>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </>
         {/* =====FACIAL SERVICES===== */}
         <> 
           {/* Face Semi-permanent Services */}
@@ -156,7 +180,7 @@ function Services() {
 
             {/* General Aesthetic Services */}
             <img className= 'dividerUpWhite' src='/divider.png'  />
-            <div className='subTypeHeading'>AESTHETICS</div>
+            <div className='subTypeHeading'>GENERAL</div>
             <div className="priceOnly">
               {services
                 .filter((service) => service.type === toggleState && service.subtype === 'body_aesthetic general')
@@ -220,26 +244,7 @@ function Services() {
             </div>
           </div>
         </>
-        <> 
-          {/* =====NAILS SERVICES====== */}
-          <div className="conditionalNails" style={{ display: toggleState === 'nails' ? 'flex' : 'none' }}>
-            <img className= 'dividerUpWhite' src='/divider.png'  />
-            <div className='subTypeHeading'>BASIC</div>
-            <div className="priceOnly">
-              {services
-                .filter((service) => service.type === toggleState && service.subtype === 'nails_general')
-                .map((service) => (
-                  <div key={service._id} className="servicesCard">
-                    <div className="rowService">
-                      <div className='priceOnlyName'>{service.name} </div>
-                      <div>Php {service.price}</div>
-                    </div>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-        </>
+
       </div>
     </div>
   )

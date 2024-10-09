@@ -59,16 +59,15 @@
 }
 .googleMap{
     border-radius: 20px;
-    border:2px solid maroon!important
 }
 .maroonbg{
     background-color: rgb(119, 43, 43);
 }
 .icon{
-
     width: 60px;
     margin: 0 7px;
-    transition: transform 0.2s
+    transition: transform 0.2s;
+    border-radius: 20px;
 }
 .icon:hover{
    transform: scale(1.1)
@@ -91,6 +90,38 @@
 }
 strong{
     color: white;
+}
+.rowSpaced{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width:250px;
+    height:auto;
+}
+.businessCol{
+    display:flex;
+    flex-direction: column;
+    width:50%;
+    height:auto;
+    justify-content: center;  
+    padding:50px;
+    align-items: center;
+    background-image: url(/border.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+}
+.businessLeftCol{
+    display:flex;
+    justify-content: center;
+    padding:30px;
+    width:50%
+}
+.businessFont{
+    display:flex;
+    color:black;
 }
 @media (max-width:1000px) {
     .row{
@@ -115,6 +146,12 @@ strong{
     }
     .storyContainer{
         margin:5px
+    }
+    .businessCol{
+        width:100%;
+    }
+    .businessLeftCol{
+        width:100%;
     }
 }
 
