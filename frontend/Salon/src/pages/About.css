@@ -8,7 +8,7 @@
     width:100%;
     height:auto;
     flex-wrap:wrap;
-    padding:20px
+    padding:10px
 }
 .storyContainer{
     display:flex;
@@ -170,7 +170,7 @@ strong{
     }
     .iframeContainer{
         padding:100px;
-        background-image: url(/border.png);
+        background-image:none;
     }
 }
 

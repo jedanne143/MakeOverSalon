@@ -9,10 +9,14 @@ function Home() {
       </div>
       <p className='iconHeading' >Head-to-Toe Beauty Services, <span className='strong'>Just for You! </span></p>
       <div className="rowContainer">
-        <img className='iconLarge' src='facial.png' />
-        <img className='iconLarge' src='hair.png' />
-        <img className='iconLarge' src='nails.png' />
-        <img className='iconLarge' src='body.png' />
+        <div className="rowLeft">
+          <img className='iconLarge' src='facial.png' />
+          <img className='iconLarge' src='hair.png' />
+        </div>
+        <div className="rowRight">
+          <img className='iconLarge' src='nails.png' />
+          <img className='iconLarge' src='body.png' />
+        </div>
       </div>
     </div>
   )
