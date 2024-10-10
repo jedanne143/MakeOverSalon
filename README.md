@@ -1,4 +1,5 @@
 MakeOver Beauty Lounge Website
+
 Welcome to the MakeOver Beauty Lounge Website! This web application serves as the online platform for MakeOver Beauty Lounge, allowing customers to explore available beauty services, book appointments, and stay informed about the salon. The website also includes a secure backend section where the salon owner can manage the services offered through CRUD (Create, Read, Update, Delete) operations, which reflect directly on the live site. This project is created using the MERN Stack (MongoDB, Express.js, React.js, Node.js).
 
 Technologies Used
