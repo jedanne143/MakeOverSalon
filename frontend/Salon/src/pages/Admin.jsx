@@ -5,12 +5,22 @@ import axios from 'axios'
 import EditBtn from '../components/EditBtn';
 import DeleteBtn from '../components/DeleteBtn';
 
-//password from .env file
+//admin credentials from .env file
 const adminPassword = import.meta.env.VITE_PASSWORD
+const adminUsername = import.meta.env.VITE_USERNAME
+
 
   function Admin() {
-    // state to track user input password
+    //state to track username input
+    const [username, setUsername] = useState('');
+    //state to track user input password
     const [password, setPassword] = useState('');
+    //state to track number of tries
+    const [ retry , setRetry] = useState(0);
+    //state to display error
+    const [isError, setIsError] = useState(false)
+
+
     //state to track if password matches
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     //useNavigate hook for redirection
@@ -130,13 +140,17 @@ const adminPassword = import.meta.env.VITE_PASSWORD
       // Prevent page refresh
       e.preventDefault(); 
       // Check if the entered password matches the adminPassword
-      if (password === adminPassword) {
+      if ( username === adminUsername && password === adminPassword ) {
         // Show displayContainer and hide loginContainer
         setIsAuthenticated(true); 
       } else {
-        alert('Incorrect password');
-        // Redirect to /home if the password is incorrect
+        setIsError(true)
+        setRetry(retry + 1)
+        // Redirect to /home if the password is incorrect twice
+        if (retry === 2 ) {
+        setRetry(0)
         navigate('/home'); 
+        }
       }
     };
 
@@ -150,11 +164,23 @@ const adminPassword = import.meta.env.VITE_PASSWORD
         <div className="login" style={{ display: isAuthenticated ? 'none' : 'flex' }}>
           <img className="iconLady" src='/iconLady.png' />
           <form className="login" onSubmit={handleLogin}> 
-            <label className='labelCol'>Enter password
+          <label className='labelCol'>Username:
+            <br/>
+            <input 
+            type="text" 
+            className="user"
+            value={username}
+            onChange={
+              //update username state based on input value
+              (e) => setUsername(e.target.value)}
+              required
+            />
+            </label>
+            <label className='labelCol'>Password
             <br/>
             <input 
             type="password" 
-            className="password"
+            className="user"
             value={password}
             onChange={
               //update password state based on input value
@@ -164,6 +190,9 @@ const adminPassword = import.meta.env.VITE_PASSWORD
             </label>
             <button className='submitBtn'>Submit</button>
           </form>
+          <div style={{ display: isError ? 'flex' : 'none' , color: 'pink'}}>
+            Incorrect combination
+          </div>
         </div>
         <img className= 'dividerDown' src='/divider.png' style={{ display: isAuthenticated ? 'none' : 'flex' }} />
         {/* Conditional rendering after admin is authenticated */}

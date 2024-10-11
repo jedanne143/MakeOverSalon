@@ -59,9 +59,9 @@ function Services() {
                 .filter((service) => service.type === toggleState && service.subtype === 'nails_general')
                 .map((service) => (
                   <div key={service._id} className="servicesCard">
-                    <div className="rowService">
-                      <div className='priceOnlyName'>{service.name} </div>
-                      <div>Php {service.price}</div>
+                    <div className="rowService sFont">
+                      <div className='priceOnlyName sFont'>{service.name} </div>
+                      <div className='sFont'>Php {service.price}</div>
                     </div>
                   </div>
                 ))
@@ -81,8 +81,8 @@ function Services() {
                 .map((service) => (
                   <div key={service._id} className="servicesCard">
                     <div className="rowService">
-                      <div className='priceOnlyName'>{service.name} </div>
-                      <div>Php {service.price}</div>
+                      <div className='priceOnlyName sFont'>{service.name} </div>
+                      <div className='sFont'>Php {service.price}</div>
                     </div>
                   </div>
                 ))
@@ -99,10 +99,10 @@ function Services() {
                   .map((service) => (
                     <div key={service._id} className="servicesCard">
                       <div className="rowService">
-                        <div className="bold">{service.name} </div>
-                        <div><span className="normal">	 {service.duration} &nbsp; &#9752; &nbsp;</span> Php {service.price}</div>
+                        <div className="bold sFont">{service.name} </div>
+                        <div className='sFont'><span className="normal sFont">	 {service.duration} &nbsp; &#9752; &nbsp;</span> Php {service.price}</div>
                       </div>
-                      {service.description && <div className="alignLeft">{service.description}</div>}
+                      {service.description && <div className="alignLeft sFont">{service.description}</div>}
                       <img className='subdivider' src='/divider2.png' />
                     </div>
                   ))}
@@ -123,8 +123,8 @@ function Services() {
                 .map((service) => (
                   <div key={service._id} className="servicesCard">
                     <div className="rowService">
-                      <div className='priceOnlyName'>{service.name} </div>
-                      <div>Php {service.price}</div>
+                      <div className='priceOnlyName sFont'>{service.name} </div>
+                      <div className='sFont'>Php {service.price}</div>
                     </div>
                   </div>
                 ))
@@ -141,10 +141,10 @@ function Services() {
                   .map((service) => (
                     <div key={service._id} className="servicesCard">
                       <div className="rowService">
-                        <div className="bold">{service.name} </div>
-                        <div>Php {service.price}</div>
+                        <div className="bold sFont">{service.name} </div>
+                        <div className='sFont'>Php {service.price}</div>
                       </div>
-                      {service.description && <div className="alignLeft">{service.description}</div>}
+                      {service.description && <div className="alignLeft sFont">{service.description}</div>}
                       <img className='subdivider' src='/divider2.png' />
                     </div>
                   ))}
@@ -161,11 +161,11 @@ function Services() {
                   .map((service) => (
                     <div key={service._id} className="servicesCard">
                       <div className="rowService">
-                        <div className="bold">{service.name} </div>
-                        <div> Php {service.price}</div>
+                        <div className="bold sFont">{service.name} </div>
+                        <div className='sFont'> Php {service.price}</div>
                       </div>
-                      {service.description && <div className="alignLeft">{service.description}</div>}
-                      <img className='subdivider' src='/divider2.png' />
+                      {service.description && <div className="alignLeft sFont">{service.description}</div>}
+                      <img className='subdivider sFont' src='/divider2.png' />
                     </div>
                   ))}
               </div>
@@ -187,8 +187,8 @@ function Services() {
                 .map((service) => (
                   <div key={service._id} className="servicesCard">
                     <div className="rowService">
-                      <div className='priceOnlyName'>{service.name} </div>
-                      <div>Php {service.price}</div>
+                      <div className='priceOnlyName sFont'>{service.name} </div>
+                      <div className="sFont">Php {service.price}</div>
                     </div>
                   </div>
                 ))
@@ -204,8 +204,8 @@ function Services() {
                 .map((service) => (
                   <div key={service._id} className="servicesCard">
                     <div className="rowService">
-                      <div className='priceOnlyName'>{service.name} </div>
-                      <div>Php {service.price}</div>
+                      <div className='priceOnlyName sFont'>{service.name} </div>
+                      <div className='sFont'>Php {service.price}</div>
                     </div>
                   </div>
                 ))
@@ -216,27 +216,27 @@ function Services() {
             <img className= 'dividerUpWhite' src='/divider.png'  />
             <div className='subTypeHeading'>HAIR REMOVAL</div>
             <div className="priceOnly">
-              <div className='underline'>DIODE</div>
+              <div className='underline sFont'>DIODE</div>
               {services
                 .filter((service) => service.type === toggleState && service.subtype === 'hair_removal diode')
                 .map((service) => (
                   <div key={service._id} className="servicesCard">
                     <div className="rowService">
-                      <div className='priceOnlyName'>{service.name} </div>
-                      <div>Php {service.price}</div>
+                      <div className='priceOnlyName sFont'>{service.name} </div>
+                      <div className='sFont'>Php {service.price}</div>
                     </div>
                   </div>
                 ))
               }
               <img className='smallerDivider' src='/divider2.png' />
-              <div className='underline'>IPL</div>
+              <div className='underline sFont'>IPL</div>
               {services
                 .filter((service) => service.type === toggleState && service.subtype === 'hair_removal IPL')
                 .map((service) => (
                   <div key={service._id} className="servicesCard">
                     <div className="rowService">
-                      <div className='priceOnlyName'>{service.name} </div>
-                      <div>Php {service.price}</div>
+                      <div className='priceOnlyName sFont'>{service.name} </div>
+                      <div className='sFont'>Php {service.price}</div>
                     </div>
                   </div>
                 ))

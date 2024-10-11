@@ -1,13 +1,11 @@
 .aboutContainer{
     display: flex;
-    flex:1;
     flex-direction: column;
     box-sizing: border-box;
     align-items: center;
     justify-content: center;
     width:100%;
     height:auto;
-    flex-wrap:wrap;
     padding:10px
 }
 .storyContainer{
@@ -136,6 +134,10 @@ strong{
     background-position: center;
 }
 @media (max-width:1000px) {
+    .aboutContainer{
+        width:100%;
+        padding:5px
+    }
     .row{
         flex-direction: column;
         width:100%;
@@ -145,9 +147,10 @@ strong{
         padding:10px
     }
     .imageOwner{
-        width:300px;
+        max-width:700px;
         padding:10px;
         margin:0;
+        width:80%;
     }
     .col{
         display:flex;
@@ -157,20 +160,29 @@ strong{
         text-align: center;
     }
     .storyContainer{
-        margin:5px
+        min-width:280px;
+        padding:5px
     }
     .businessCol{
         width:100%;
+        min-width:300px;
         background-image: url(/border2.png);
-        
+        align-items: center;        
     }
     .businessLeftCol{
         width:100%;
-  
+        justify-content: center;
+        align-items: center
     }
     .iframeContainer{
-        padding:100px;
         background-image:none;
+        justify-content: center;
+        padding:5px
+    }
+    .googleMap iframe{
+        width:100%;
+        height:auto;
+        padding:10px
     }
 }
 
