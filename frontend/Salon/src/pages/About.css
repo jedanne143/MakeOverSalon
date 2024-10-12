@@ -50,7 +50,7 @@
 }
 .justify{
     text-align: justify;
-    font-size: 19px
+    font-size: 18px
 }
 .space{
     margin:15px
@@ -165,7 +165,7 @@ strong{
     }
     .businessCol{
         width:100%;
-        min-width:300px;
+        min-width:290px;
         background-image: url(/border2.png);
         align-items: center;        
     }
@@ -183,6 +183,13 @@ strong{
         width:100%;
         height:auto;
         padding:10px
+    }
+    .justify{
+        font-size:16px;
+    }
+    .rowSpaced{
+        width:100%;
+        max-width:300px
     }
 }
 
